@@ -1,8 +1,6 @@
 {
-    "name": "ibu/weby",
-    "description": "system for restaurant site",
-    "license": "Apache2",
+
     "require": {
-        "mikecao/flight": "^1.3"
+        "mikecao/flight": "^2.0"
     }
 }

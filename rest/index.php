@@ -1,20 +1,46 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 require_once '../vendor/autoload.php';
-require_once 'dao/WEBYDao.class.php';
+require_once 'dao/BaseDao.class.php';
 
-$dao=new WEBYDao();
-print_r($dao->get_all());
-/*Flight::register('webDao', 'WEBYDao');
-
-Flight::route('/', function(){
-  echo 'test';
-});
 
 Flight::route('GET /users', function(){
-  Flight::json(Flight::webDao()->get());
+  echo 'helo';
+});
+
+
+Flight::route('GET /users', function(){
+  $dao = new UsersDao();
+  $users = $dao->get_all(0,10);
+  Flight::json($users);
+});
+
+Flight::route('GET /users/@id', function($id){
+  $dao = new UsersDao();
+  $users = $dao->get_by_id($id);
+  Flight::json($users);
+});
+
+Flight::route('POST /users', function(){
+  $request = Flight::request();
+  $data = $request->data->getdata();
+  $dao = new UsersDao();
+  $user = $dao->add($data);
+  print_r($data);
+  Flight::json($users);
+});
+
+Flight::route('PUT /users/@id', function($id){
+  $dao = new UsersDao();
+  $users = $dao->get_by_id(0,10);
+  print_r($users);
+  $dao->update($id, $data);
+  $request = Flight::request();
+  Flight::json($users);
 });
 
 Flight::start();
-*/
 ?>
