@@ -3,8 +3,13 @@ require_once dirname(__FILE__)."/BaseDao.class.php";
 
 class OrdersDao extends BaseDao{
 
+  public function __construct(){
+    parent::__construct("orders");
+  }
+
+
   public function get_by_id($id){
-    return $this->query_unique("SELECT * FROM orders WHERE id = :id", ["id"=> $id]);
+    return $this->get_by("SELECT * FROM orders WHERE id = :id", ["id"=> $id]);
   }
 
   public function add_orders($order){

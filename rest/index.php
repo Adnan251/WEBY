@@ -4,43 +4,32 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 require_once '../vendor/autoload.php';
-require_once 'dao/BaseDao.class.php';
+require_once '/services/CreditCardService.class.php';
+require_once '/services/FoodService.class.php';
+require_once '/services/IngrediantsService.class.php';
+require_once '/services/OrdersService.class.php';
+require_once '/services/TransactionService.class.php';
+require_once '/services/UsersService.class.php';
+
+Flight::register('creditCardService', 'CreditCardService');
+Flight::register('foodService', 'FoodService');
+Flight::register('ingrediantsService', 'IngrediantsService');
+Flight::register('ordersService', 'OrdersService');
+Flight::register('transactionService', 'TransactionService');
+Flight::register('usersService', 'UsersService');
 
 
-Flight::route('GET /users', function(){
-  echo 'helo';
+Flight::map('error', function(Exception $ex){
+    // Handle error
+    Flight::json(['message' => $ex->getMessage()], 500);
 });
 
-
-Flight::route('GET /users', function(){
-  $dao = new UsersDao();
-  $users = $dao->get_all(0,10);
-  Flight::json($users);
-});
-
-Flight::route('GET /users/@id', function($id){
-  $dao = new UsersDao();
-  $users = $dao->get_by_id($id);
-  Flight::json($users);
-});
-
-Flight::route('POST /users', function(){
-  $request = Flight::request();
-  $data = $request->data->getdata();
-  $dao = new UsersDao();
-  $user = $dao->add($data);
-  print_r($data);
-  Flight::json($users);
-});
-
-Flight::route('PUT /users/@id', function($id){
-  $dao = new UsersDao();
-  $users = $dao->get_by_id(0,10);
-  print_r($users);
-  $dao->update($id, $data);
-  $request = Flight::request();
-  Flight::json($users);
-});
+require_once '/routes/CreditCardService.php';
+require_once '/routes/FoodService.php';
+require_once '/routes/IngrediantsService.php';
+require_once '/routes/OrdersService.php';
+require_once '/routes/TransactionService.php';
+require_once '/routes/UsersService.php';
 
 Flight::start();
 ?>

@@ -1,42 +1,86 @@
 <?php
-require_once dirname(__FILE__)."/../config.php";
 
 class BaseDao {
-  protected $connection;
+  protected $conn;
+  private $table_name;
 
   public function __construct(){
-
-    try {
-      $this->connection = new PDO("mysql:host=".Config::DB_HOST.";dbname=".Config::DB_SCHEME, Config::DB_USERNAME, Config::DB_PASSWORD);
-      $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    } catch(PDOException $e) {
-      throw $e;
-    }
+    $this->table_name = $table_name;
+    $servername = Config::DB_HOST();
+    $username = Config::DB_USERNAME();
+    $password = Config::DB_PASSWORD();
+    $schema = Config::DB_SCHEME();
+    $port = Config::DB_PORT();
+    $this->conn = new PDO("mysql:host=$servername;dbname=$schema", $username, $password);
+    $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   }
 
-
-  public function query($query, $parameter){
-    $stmt = $this->connection->prepare($query);
-    $stmt->execute($parameter);
+  /**
+  * Method used to read all records from database
+  */
+  public function get_all(){
+    $stmt = $this->conn->prepare("SELECT * FROM ".$this->table_name);
+    $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
   }
 
-  public function query_unique($query, $paramiter){
-    $results = $this->query($query, $paramiter);
+  public function get_by_id($id){
+    $stmt = $this->conn->prepare("SELECT * FROM ".$this->table_name." WHERE id = :id");
+    $stmt->execute(['id' => $id]);
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return reset($result);
+  }
+
+  /**
+  * Delete record from the database
+  */
+  public function delete($id){
+    $stmt = $this->conn->prepare("DELETE FROM ".$this->table_name." WHERE id=:id");
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
+  }
+
+  public function add($entity){
+    $query = "INSERT INTO ".$this->table_name." (";
+    foreach ($entity as $column => $value) {
+      $query .= $column.", ";
+    }
+    $query = substr($query, 0, -2);
+    $query .= ") VALUES (";
+    foreach ($entity as $column => $value) {
+      $query .= ":".$column.", ";
+    }
+    $query = substr($query, 0, -2);
+    $query .= ")";
+
+    $stmt= $this->conn->prepare($query);
+    $stmt->execute($entity); // sql injection prevention
+    $entity['id'] = $this->conn->lastInsertId();
+    return $entity;
+  }
+
+  public function update($id, $entity, $id_column = "id"){
+    $query = "UPDATE ".$this->table_name." SET ";
+    foreach($entity as $name => $value){
+      $query .= $name ."= :". $name. ", ";
+    }
+    $query = substr($query, 0, -2);
+    $query .= " WHERE ${id_column} = :id";
+
+    $stmt= $this->conn->prepare($query);
+    $entity['id'] = $id;
+    $stmt->execute($entity);
+  }
+
+  protected function query($query, $params){
+    $stmt = $this->conn->prepare($query);
+    $stmt->execute($params);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+  }
+
+  protected function query_unique($query, $params){
+    $results = $this->query($query, $params);
     return reset($results);
-  }
-
-  public function add($todo){
-    $stmt = $this->connection->prepare("INSERT INTO users () VALUES (:user_name, :password, :email, :birthday, :creditcard_id)");
-    $stmt->execute($todo);
-    $todo['id'] = $this->connection->lastInsertId();
-    return $todo;
-  }
-
-  public function update($todo){
-    $stmt = $this->connection->prepare("UPDATE users SET user_name=:user_name, password=:password, email=:email, birthday=:birthday WHERE id=:id");
-    $stmt->execute($todo);
-    return $todo;
   }
 }
 
