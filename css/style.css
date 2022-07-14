@@ -58,9 +58,9 @@ p, ul, ol {
 a {
   -webkit-transition: .3s all;
   transition: .3s all;
-  color: #FFA33E;
+  color: #FFA33E !important;
 }
-
+.icon-instagram {border:1px solid red !important;z-index: 10000}
 a:hover, a:focus, a:active {
   color: #ff9725;
   text-decoration: none;

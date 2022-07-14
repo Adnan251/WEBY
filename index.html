@@ -332,29 +332,47 @@
                 </div>
                 <div class="col-md-4">
                     <ul class="probootstrap-footer-social right">
-                        <li><a href="#"><i class="icon-twitter"></i></a></li>
-                        <li><a href="#"><i class="icon-facebook"></i></a></li>
-                        <li><a href="#"><i class="icon-instagram"></i></a></li>
+                        <li><button class= "log_button" onclick="login_logout()">Login/Logout
+                        </button></li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
     <script src="js/scripts.min.js"></script>
     <script src="js/custom.min.js"></script>
-    <script src="js/jquery.validate.min.js"></script>
 
 </body>
 <script src="js/food_service.js"></script>
 <script src="js/reservations_service.js"></script>
 <script src="js/email_service.js"></script>
-
+<script src="js/admin_service.js"></script>
 <script>
+
+function login_logout(){
+  var token = localStorage.getItem("token");
+  if(token){
+    localStorage.clear();
+    window.location.replace("index.html");
+  }
+  else{
+    window.location.replace("login.html");
+  }
+}
+
+var token = localStorage.getItem("token");
+if(token){
+  FoodsService.list();
+}
+else{
   FoodsService.list();
   FoodsService.list_all();
   ReservationsService.init();
   EmailsService.init();
+}
+
 </script>
 </html>
