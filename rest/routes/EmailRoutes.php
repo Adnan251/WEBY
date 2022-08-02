@@ -1,6 +1,6 @@
 <?php
 /**
- * @OA\Get(path="/email", tags={"email"}, security={{"ApiKeyAuth": {}}},
+ * @OA\Get(path="/email", tags={"email"},
  *         summary="Return all emails from the API. ",
  *         @OA\Response( response=200, description="List of emails.")
  * )
@@ -11,7 +11,7 @@ Flight::route('GET /email', function(){
 
 /**
 * @OA\Post(
-*     path="/email", security={{"ApiKeyAuth": {}}},
+*     path="/email",
 *     description="Add email",
 *     tags={"email"},
 *     @OA\RequestBody(description="Basic email info", required=true,
@@ -38,7 +38,7 @@ Flight::route('POST /email', function(){
 
 /**
 * @OA\Delete(
-*     path="/email/{id}", security={{"ApiKeyAuth": {}}},
+*     path="/email/{id}",
 *     description="Soft delete email",
 *     tags={"email"},
 *     @OA\Parameter(in="path", name="id", example=1, description="Note ID"),

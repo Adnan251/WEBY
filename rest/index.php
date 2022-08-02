@@ -8,13 +8,13 @@ use Firebase\JWT\Key;
 
 require_once '../vendor/autoload.php';
 require_once __DIR__. './services/FoodService.class.php';
-require_once __DIR__. './services/IngrediantsService.class.php';
+require_once __DIR__. './services/IngredientsService.class.php';
 require_once __DIR__. './services/ReservationsService.class.php';
 require_once __DIR__. './services/EmailsService.class.php';
 require_once __DIR__. './dao/AdminDao.class.php';
 
 Flight::register('foodService', 'FoodService');
-Flight::register('ingrediantsService', 'IngrediantsService');
+Flight::register('ingredientsService', 'IngredientsService');
 Flight::register('reservationsService','ReservationsService');
 Flight::register('emailsService','EmailsService');
 Flight::register('adminDao', 'AdminDao');
@@ -63,7 +63,7 @@ Flight::route('GET /docs.json', function(){
 });
 
 require_once __DIR__. '/routes/FoodRoutes.php';
-require_once __DIR__. '/routes/IngrediantsRoutes.php';
+require_once __DIR__. '/routes/IngredientsRoutes.php';
 require_once __DIR__. '/routes/ReservationsRoutes.php';
 require_once __DIR__. '/routes/EmailRoutes.php';
 require_once __DIR__. '/routes/AdminRoutes.php';

@@ -1,17 +1,14 @@
 <?php
 
 /**
-* List all reservations
-*/
+ * @OA\Get(path="/reservations", tags={"reservations"},
+ *         summary="Return all reservations from the API. ",
+ *         @OA\Parameter(in="query", name="search", description="Search critieri"),
+ *         @OA\Response( response=200, description="List of notes.")
+ * )
+ */
 Flight::route('GET /reservations', function(){
   Flight::json(Flight::reservationsService()->get_all());
-});
-
-/**
-* List invidiual reservations
-*/
-Flight::route('GET /reservations/@id', function($id){
-  Flight::json(Flight::reservationsService()->get_by_id($id));
 });
 
 /**
@@ -44,15 +41,20 @@ Flight::route('POST /reservations', function(){
 });
 
 /**
-* update reservations
-*/
-Flight::route('PUT /reservations/@id', function($id){
-  $data = Flight::request()->data->getData();
-  Flight::json(Flight::reservationsService()->update($id, $data));
-});
-
-/**
-* delete reservations
+* @OA\Delete(
+*     path="/reservations/{id}", security={{"ApiKeyAuth": {}}},
+*     description="Soft delete reservations",
+*     tags={"reservations"},
+*     @OA\Parameter(in="path", name="id", example=1, description="Note ID"),
+*     @OA\Response(
+*         response=200,
+*         description="reservations deleted"
+*     ),
+*     @OA\Response(
+*         response=500,
+*         description="Error"
+*     )
+* )
 */
 Flight::route('DELETE /reservations/@id', function($id){
   Flight::reservationsService()->delete($id);

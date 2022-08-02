@@ -14,7 +14,7 @@ var FoodsService = {
               </div>
               <div class="col-sm-7" style="float:right;">
                   <div class="ze"><h3>TEST`+data[value].name+`</h3>
-                  <p>`+data[value].type+`</p>
+                  <p">`+data[value].type+`</p>
                   <p class="price">`+data[value].price+`</p>
                   </div>
               </div>

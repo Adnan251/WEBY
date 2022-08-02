@@ -19,34 +19,31 @@ var EmailsService = {
        });
      },
 
+     list_all: function(){
+       $.ajax({
+         url: 'rest/email',
+         type: 'GET',
+         dataType: "json",
+         success: function(data) {
+          $("#menus").html("");
+          var html = "";
+          for(let i = 0; i < data.length; i++){
+            html += `
+            <div>
+              <div>
+                <div>
+                    <h4>Name: ` + data[i].name + `</h4>
+                    <h3>Email: ` + data[i].email + `</h3>
+                    <p>Text: ` + data[i].text + `</p>
+                </div>
+              </div>
+            </div>
+            `;
+          }
+          $("#menus").html(html);
+        }
+        });
+      },
+
 
 }
-
- function get_all_emails(){
-   $.ajax({
-     url: 'rest/email',
-     type: 'GET',
-     dataType: "json",
-     success: function(data) {
-      $("#email_form").html("");
-      $("#reservation_form").html("");
-      var html = "";
-      for(let i = 0; i < data.length; i++){
-        html += `
-        <div class="col-lg-6 col-sm-12 col-xs-6">
-        <div class="row">
-            <div class="col-sm-7" style="float:right;">
-                <div class="ze"><h3>Name: `+data[i].name+`</h3>
-                <h4>Email: `+data[i].email+`</h4>
-                <p>Text: `+data[i].text+`</p>
-                </div>
-            </div>
-            </div><br/>
-        </div>
-        `;
-      }
-      //console.log(html);
-      $("#email_form").html(html);
-    }
-    });
-  }

@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Pinyon+Script" rel="stylesheet">
     <link rel="stylesheet" href="css/styles-merged.css">
     <link rel="stylesheet" href="css/style.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
 
 
     <!--[if lt IE 9]>
@@ -38,7 +38,7 @@
 
             <div id="navbar-collapse" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a href="#" data-nav-section="welcome">Welcome</a></li>
+                    <li class="active"><a href="#" data-nav-section="welcome" >Welcome</a></li>
                     <li><a href="#" data-nav-section="specialties">Specialties</a></li>
                     <li><a href="#" data-nav-section="menu">Menu</a></li>
                     <li><a href="#" data-nav-section="reservation">Reservation</a></li>
@@ -93,8 +93,8 @@
         </ul>
     </section>
 
-    <section class="probootstrap-section probootstrap-bg-white">
-        <div class="container">
+    <section class="probootstrap-section probootstrap-bg-white" id="1">
+        <div class="container" >
             <div class="row">
                 <div class="col-md-5 text-center probootstrap-animate">
                     <div class="probootstrap-heading dark">
@@ -113,8 +113,8 @@
         </div>
     </section>
 
-    <section class="probootstrap-section-bg overlay" style="background-image: url(img/kitchen-4.png);" data-stellar-background-ratio="0.5" data-section="specialties">
-        <div class="container">
+    <section class="probootstrap-section-bg overlay" id="2" style="background-image: url(img/kitchen-4.png);" data-stellar-background-ratio="0.5" data-section="specialties">
+        <div class="container" >
             <div class="row">
                 <div class="col-md-12 text-center probootstrap-animate">
                     <div class="probootstrap-heading">
@@ -128,12 +128,12 @@
     <!-- probootstrap-bg-white -->
     <section class="probootstrap-section">
         <div class="container" id="daylie_foods">
-            <!-- ffzguhjifdzghujiokpldfghjklčpfghjklčć-->
+            <!-- daily food thingy-->
         </div>
     </section>
 
-    <section class="probootstrap-section-bg overlay" style="background-image: url(img/kitchen-8.png);" data-stellar-background-ratio="0.5" data-section="menu">
-        <div class="container">
+    <section class="probootstrap-section-bg overlay" id="3" style="background-image: url(img/kitchen-8.png);" data-stellar-background-ratio="0.5" data-section="menu">
+        <div class="container" >
             <div class="row">
                 <div class="col-md-12 text-center probootstrap-animate">
                     <div class="probootstrap-heading">
@@ -147,15 +147,32 @@
 
     <section class="probootstrap-section probootstrap-bg-white">
         <div class="container" >
-            <div class="row">
-                <div class="col-md-6" id="menus">
+              <div class="col-md-12" id="menus">
                     <!-- List all foods here -->
+              </div>
+        </div>
+    </section>
+
+    <section class="probootstrap-section-bg overlay" id="5" style="background-image: url(img/kitchen-4.png);" data-stellar-background-ratio="0.5" data-section="specialties">
+        <div class="container" >
+            <div class="row">
+                <div class="col-md-12 text-center probootstrap-animate">
+                    <div class="probootstrap-heading">
+                        <h2 class="primary-heading">Check</h2>
+                        <h3 class="secondary-heading">Your Allergies</h3>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+    <!-- probootstrap-bg-white -->
+    <section class="probootstrap-section">
+        <div class="container" id="alergies">
+            <!-- lista all alergies thingy-->
+        </div>
+    </section>
 
-    <section class="probootstrap-section-bg overlay" style="background-image: url(img/kitchen-5.jpg);" data-stellar-background-ratio="0.5" data-section="reservation">
+    <section class="probootstrap-section-bg overlay" id="4" style="background-image: url(img/kitchen-5.jpg);" data-stellar-background-ratio="0.5" data-section="reservation">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-center probootstrap-animate">
@@ -171,7 +188,7 @@
     <section class="probootstrap-section probootstrap-bg-white">
         <div class="container">
             <div class="row">
-                <div class="col-md-12 probootstrap-animate">
+                <div class="col-md-6 probootstrap-animate" id="reservations">
                     <form method="post" id ="reservation_form" class="probootstrap-form">
                         <div class="row">
                             <div class="col-md-4">
@@ -250,14 +267,14 @@
     </section>
 
     <section class="probootstrap-section probootstrap-bg-white" data-section="contact">
-        <div class="container">
+        <div class="container" id="emails_thingy">
             <div class="row">
                 <div class="col-md-5 text-center probootstrap-animate">
                     <div class="probootstrap-heading dark">
                         <h1 class="primary-heading">Contact</h1>
                         <h3 class="secondary-heading">Let's Chat</h3>
                     </div>
-                    <p>Voluptatibus quaerat laboriosam fugit non Ut consequatur animi est molestiae enim a voluptate totam natus modi debitis dicta impedit voluptatum quod sapiente illo saepe explicabo quisquam perferendis labore et illum suscipit</p>
+                    <p></p>
                 </div>
                 <div class="col-md-6 col-md-push-1 probootstrap-animate">
                     <form id="email_form" class="probootstrap-form">
@@ -340,39 +357,41 @@
         </div>
     </section>
     <script src="js/jquery-3.6.0.min.js"></script>
-    <script src="js/jquery.validate.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="js/scripts.min.js"></script>
     <script src="js/custom.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
 
 </body>
 <script src="js/food_service.js"></script>
 <script src="js/reservations_service.js"></script>
 <script src="js/email_service.js"></script>
 <script src="js/admin_service.js"></script>
-<script>
+<script src="js/ingredient_service.js"></script>
 
-function login_logout(){
+<script>
+  function login_logout(){
+    var token = localStorage.getItem("token");
+    if(token){
+      localStorage.clear();
+      window.location.replace("index.html");
+    }
+    else{
+      window.location.replace("login.html");
+    }
+  }
+
   var token = localStorage.getItem("token");
   if(token){
-    localStorage.clear();
-    window.location.replace("index.html");
+    ReservationsService.list_all();
+    EmailsService.list_all()
   }
   else{
-    window.location.replace("login.html");
+    FoodsService.list();
+    FoodsService.list_all();
+    ReservationsService.init();
+    EmailsService.init();
+    IngredientsService.list_all();
   }
-}
-
-var token = localStorage.getItem("token");
-if(token){
-  FoodsService.list();
-}
-else{
-  FoodsService.list();
-  FoodsService.list_all();
-  ReservationsService.init();
-  EmailsService.init();
-}
-
 </script>
 </html>
