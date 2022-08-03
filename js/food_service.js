@@ -13,7 +13,7 @@ var FoodsService = {
                 <img src="img/`+data[value].image_url+`" alt="Description for image" width="250" height="250"; style="border-radius:50%">
               </div>
               <div class="col-sm-7" style="float:right;">
-                  <div class="ze"><h3>TEST`+data[value].name+`</h3>
+                  <div class="ze"><h3>`+data[value].name+`</h3>
                   <p">`+data[value].type+`</p>
                   <p class="price">`+data[value].price+`</p>
                   </div>
@@ -41,7 +41,7 @@ var FoodsService = {
                   <img src="img/`+data[i].image_url+`" alt="Description for image" width="250" height="250"; style="border-radius:50%">
                 </div>
                 <div class="col-sm-7" style="float:right;">
-                    <div class="ze"><h3>TEST`+data[i].name+`</h3>
+                    <div class="ze"><h3>`+data[i].name+`</h3>
                     <p>`+data[i].type+`</p>
                     <p class="price">`+data[i].price+`</p>
                     </div>

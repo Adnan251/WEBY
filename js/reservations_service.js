@@ -46,7 +46,7 @@ var ReservationsService = {
                 <p>People: `+data[i].number_of_people+`</p>
             </div>
             <div class="right thingy" style="float: right;">
-              <button class= "del_button" style="background:blue;" onclick="ReservationsService.delete(`+ data[i].id +`)">Delete Reservation
+              <button class= "del_button" onclick="ReservationsService.delete(`+ data[i].id +`)">Delete Reservation
               </button>
             </div>
         </div>
