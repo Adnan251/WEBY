@@ -8,5 +8,9 @@ class FoodService extends BaseService{
     parent::__construct(new FoodDao());
   }
 
+  public function get_by_name($name){
+    return $this->dao->get_by_name($name);
+  }
+
 }
 ?>

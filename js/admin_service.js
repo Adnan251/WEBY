@@ -1,6 +1,5 @@
 var AdminService = {
   init: function(){
-
     var token = localStorage.getItem("token");
     if (token){
       window.location.replace("index.html");
@@ -13,7 +12,9 @@ var AdminService = {
     });
   },
   login: function(entity){
+    $("#login_button").attr("disabled", true);
     $.ajax({
+
       url: 'rest/login',
       type: 'POST',
       data: JSON.stringify(entity),
@@ -25,6 +26,7 @@ var AdminService = {
         window.location.replace("index.html");
       },
       error: function(XMLHttpRequest, textStatus, errorThrown) {
+        $("#login_button").attr("disabled", false);
         toastr.error(XMLHttpRequest.responseJSON.message);
       }
     });

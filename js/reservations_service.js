@@ -1,4 +1,4 @@
-var ReservationsService = {
+ var ReservationsService = {
   init: function(){
        $('#reservation_form').validate({
          submitHandler: function(form) {
@@ -48,6 +48,8 @@ var ReservationsService = {
             <div class="right thingy" style="float: right;">
               <button class= "del_button" onclick="ReservationsService.delete(`+ data[i].id +`)">Delete Reservation
               </button>
+              <button class= "updateee" id="click-me" data-bs-toggle="modal" data-bs-target="#exampleModal2">Update
+              </button>
             </div>
         </div>
           `;
@@ -69,4 +71,53 @@ delete: function(id){
         }
       });
     },
+
+    get: function(id){
+        $("#click-me").attr("disabled",true);
+        $.ajax({
+          url: "rest/reservations/"+id,
+          type: "GET",
+          success: function(data){
+            console.log(data);
+            $("#id").val(data.id);
+            $("#writeName").val(data.name);
+            $("#writeNumber").val(data.number_of_people);
+            $("#writeDate").val(data.date);
+            $("#writeTime").val(data.time);
+            $("#writeEmail").val(data.email);
+            $("#writePhone").val(data.phone);
+            $("#exampleModal").modal("show");
+            $("#click-me").attr("disabled",false);
+          },
+          error: function(XMLHttpRequest, textStatus, errorThrown) {
+            toastr.error(XMLHttpRequest.responseJSON.message);
+          }
+        })
+    },
+
+    update: function(id){
+        $("#updateButton").attr("disabled",true);
+        var res={};
+        res.id=$("#id").val();
+        res.name=$("#writeName").val();
+        res.number_of_people=$("#writeNumber").val();
+        res.date=$("#writeDate").val();
+        res.time=$("#writeTime").val();
+        res.email=$("#writeEmail").val();
+        res.phone=$("#writePhone").val();
+        console.log(res);
+        $.ajax({
+          url:'rest/books/'+$("#id").val(),
+          type:'PUT',
+          data:JSON.stringify(res),
+          contentType:'application/json',
+          dataType:'json',
+          success: function(result){
+                $("#exampleModal").modal("hide");
+                $("#updateButton").attr("disabled",false);
+                ReservationsService.list_all();
+          },
+        })
+    }
+
 }

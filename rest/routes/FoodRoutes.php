@@ -22,4 +22,16 @@ Flight::route('GET /foods/@id', function($id){
   Flight::json(Flight::foodService()->get_by_id($id));
 });
 
+/**
+ * @OA\Get(path="/search_foods", tags={"foods"},
+ *         summary="Return food with the given name.",
+ *     @OA\Parameter(in="path", name="id", example=1, description="Id of food"),
+ *     @OA\Response(response="200", description="Fetch individual food")
+ * )
+ */
+Flight::route('GET /search_foods', function(){
+  $name = Flight::query('name');
+  Flight::json(Flight::foodService()->get_by_name($name));
+});
+
 ?>

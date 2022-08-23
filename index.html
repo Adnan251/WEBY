@@ -127,6 +127,9 @@
     </section>
     <!-- probootstrap-bg-white -->
     <section class="probootstrap-section">
+        <div><input type="number" min="1" max="6" id="search_by_number" placeholder="Search.."></div>
+        <div><button class= "log_button" onclick="FoodsService.list();">search
+        </button></div>
         <div class="container" id="daylie_foods">
             <!-- daily food thingy-->
         </div>
@@ -147,6 +150,10 @@
 
     <section class="probootstrap-section probootstrap-bg-white">
         <div class="container" >
+
+              <div><input type="text" id="search_bar" placeholder="Search.."></div>
+              <div><button class= "log_button" onclick="FoodsService.get_by_name();event.preventDefault();">search
+              </button></div>
               <div class="col-md-12" id="menus">
                     <!-- List all foods here -->
               </div>
@@ -357,12 +364,80 @@
         </div>
     </section>
     <script src="js/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/scripts.min.js"></script>
     <script src="js/custom.min.js"></script>
     <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
 
 </body>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form>
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Edit Reservation</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <input id="id" type="hidden">
+          <div class="form-grid">
+            <label>Guest Name</label>
+            <input name="name" id="writeName" type="text" class="form-control required">
+          </div>
+          <div class="form-group">
+            <label>Number of People</label>
+            <select name="number_of_people" id="writeNumber" class="form-control required">
+              <option value="1">1 people</option>
+              <option value="2">2 people</option>
+              <option value="3">3 people</option>
+              <option value="4">4+ people</option>
+              </select>
+          </div>
+          <div class="form-group">
+            <label>Date of Reservation</label>
+            <input type="text" id="writeDate" class="form-control required" name="date">
+          </div>
+          <div class="form-group">
+            <label>Time of Reservation</label>
+            <input type="text" id="writeTime" class="form-control required" name="time">
+          </div>
+          <div class="form-group">
+            <label>Email of Guest</label>
+            <input name="email" id="writeEmail" type="text" class="form-control required">
+          </div>
+          <div class="form-group">
+            <label>Phone Number of Guest</label>
+            <input name="phone" id="writePhone" type="text" class="form-control required">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" id="updateButton" class="btn btn-warning" onclick="ReservationsService.update(`+data[i].id+`)">Save changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script src="js/food_service.js"></script>
 <script src="js/reservations_service.js"></script>
 <script src="js/email_service.js"></script>
@@ -387,7 +462,7 @@
     EmailsService.list_all()
   }
   else{
-    FoodsService.list();
+    FoodsService.list6();
     FoodsService.list_all();
     ReservationsService.init();
     EmailsService.init();
