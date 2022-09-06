@@ -58,11 +58,8 @@ Flight::route('GET /reservations/@id', function($id){
 Flight::route('PUT /reservations/@id',function($id){
     $request=Flight::request();
     $reservation = Flight::reservationsService()->get($request->data->getData(),$id);
-    if($reservations==null){
-        Flight::json(["error"=>"Cannot add an existing book!"]);
-    } else {
-        Flight::json(['message' => 'updated']);
-    }
+    Flight::json(['message' => 'updated']);
+
 });
 
 /**
