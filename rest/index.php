@@ -7,11 +7,11 @@ use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
 require_once '../vendor/autoload.php';
-require_once __DIR__. '/services/FoodService.class.php';
-require_once __DIR__. '/services/IngredientsService.class.php';
-require_once __DIR__. '/services/ReservationsService.class.php';
-require_once __DIR__. '/services/EmailsService.class.php';
-require_once __DIR__. '/dao/AdminDao.class.php';
+require_once __DIR__.'/services/FoodService.class.php';
+require_once __DIR__.'/services/IngredientsService.class.php';
+require_once __DIR__.'/services/ReservationsService.class.php';
+require_once __DIR__.'/services/EmailsService.class.php';
+require_once __DIR__.'/dao/AdminDao.class.php';
 
 Flight::register('foodService', 'FoodService');
 Flight::register('ingredientsService', 'IngredientsService');
