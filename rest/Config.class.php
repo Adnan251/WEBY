@@ -3,16 +3,16 @@
 class Config {
 
   public static function DB_HOST(){
-    return Config::get_env("DB_HOST", "eu-cdbr-west-03.cleardb.net");
+    return Config::get_env("DB_HOST", "localhost");
   }
   public static function DB_USERNAME(){
-    return Config::get_env("DB_USERNAME", "bdd1717f590982");
+    return Config::get_env("DB_USERNAME", "AdnanDzindo");
   }
   public static function DB_PASSWORD(){
-    return Config::get_env("DB_PASSWORD", "7f7b4e6e");
+    return Config::get_env("DB_PASSWORD", "SQLAdnan251");
   }
   public static function DB_SCHEME(){
-    return Config::get_env("DB_SCHEME", "heroku_671e02bc8690d67");
+    return Config::get_env("DB_SCHEME", "weby_db");
   }
   public static function DB_PORT(){
     return Config::get_env("DB_PORT", "3306");
