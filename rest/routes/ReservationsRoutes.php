@@ -59,7 +59,6 @@ Flight::route('PUT /reservations/@id',function($id){
     $request=Flight::request();
     $reservation = Flight::reservationsService()->get($request->data->getData(),$id);
     Flight::json(['message' => 'updated']);
-
 });
 
 /**

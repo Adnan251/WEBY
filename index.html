@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Pinyon+Script" rel="stylesheet">
     <link rel="stylesheet" href="css/styles-merged.css">
     <link rel="stylesheet" href="css/style.min.css">
-
+    <link rel="stylesheet" href="css/bootstrap.min.css">
 
 
     <!--[if lt IE 9]>
@@ -371,7 +371,7 @@
 
 </body>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <form>
@@ -382,11 +382,11 @@
         <div class="modal-body">
           <input id="id" type="hidden">
           <div class="form-grid">
-            <label>Guest Name</label>
+            <label for="writeName" class="form-label">Guest Name</label>
             <input name="name" id="writeName" type="text" class="form-control required">
           </div>
           <div class="form-group">
-            <label>Number of People</label>
+            <label for="writeNumber" class="form-label">Number of People</label>
             <select name="number_of_people" id="writeNumber" class="form-control required">
               <option value="1">1 people</option>
               <option value="2">2 people</option>
@@ -395,48 +395,31 @@
               </select>
           </div>
           <div class="form-group">
-            <label>Date of Reservation</label>
+            <label for="writeDate" class="form-label">Date of Reservation</label>
             <input type="text" id="writeDate" class="form-control required" name="date">
           </div>
           <div class="form-group">
-            <label>Time of Reservation</label>
+            <label for="writeTime" class="form-label">Time of Reservation</label>
             <input type="text" id="writeTime" class="form-control required" name="time">
           </div>
           <div class="form-group">
-            <label>Email of Guest</label>
+            <label for="writeEmail" class="form-label">Email of Guest</label>
             <input name="email" id="writeEmail" type="text" class="form-control required">
           </div>
           <div class="form-group">
-            <label>Phone Number of Guest</label>
+            <label for="writePhone" class="form-label">Phone Number of Guest</label>
             <input name="phone" id="writePhone" type="text" class="form-control required">
           </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" id="updateButton" class="btn btn-warning" onclick="ReservationsService.update(`+data[i].id+`)">Save changes</button>
+          <button type="submit" id="updateButton" class="btn btn-warning" onClick="ReservationsService.update()" >Save changes</button>
         </div>
       </form>
     </div>
   </div>
 </div>
 
-<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 <script src="js/food_service.js"></script>
 <script src="js/reservations_service.js"></script>

@@ -48,7 +48,7 @@
             <div class="right thingy" style="float: right;">
               <button class= "del_button" onclick="ReservationsService.delete(`+ data[i].id +`)">Delete Reservation
               </button>
-              <button class= "updateee" id="click-me" data-bs-toggle="modal" data-bs-target="#exampleModal2">Update
+              <button  class= "updateee" id="click-me" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick="ReservationsService.get(`+ data[i].id +`)">Update
               </button>
             </div>
         </div>
@@ -73,6 +73,7 @@ delete: function(id){
     },
 
     get: function(id){
+
         $("#click-me").attr("disabled",true);
         $.ajax({
           url: "rest/reservations/"+id,
@@ -105,17 +106,18 @@ delete: function(id){
         res.time=$("#writeTime").val();
         res.email=$("#writeEmail").val();
         res.phone=$("#writePhone").val();
-        console.log(res);
         $.ajax({
-          url:'rest/books/'+$("#id").val(),
+          url:'rest/reservations/'+$("#id").val(),
           type:'PUT',
           data:JSON.stringify(res),
           contentType:'application/json',
           dataType:'json',
           success: function(result){
+                console.log(result);
+                $("#daylie_foods").html('');
+                ReservationsService.list_all();
                 $("#exampleModal").modal("hide");
                 $("#updateButton").attr("disabled",false);
-                ReservationsService.list_all();
           },
         })
     }
